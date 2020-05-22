@@ -92,6 +92,8 @@ alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 alias si='du -sh *'
+alias update='sudo apt-get update && sudo apt-get upgrade'
+alias restart='sudo shutdown -r now'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -116,3 +118,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+complete -C /usr/local/bin/terraform terraform
