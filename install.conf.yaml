@@ -13,6 +13,8 @@
 - create:
     - ~/downloads
     - ~/.vim/undo-history
+    - /volumes
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - [chown matt:matt /volumes]
