@@ -1,5 +1,27 @@
 #!/usr/bin/env bash
 
+### Debian based distros
+###
+# Install base packages
+apt install -y vim \
+    tmux \
+    apt-transport-https \
+    curl \
+    htop
+
+# Install nordvpn
+wget https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb -P /home/matt/Downloads
+apt-get install /home/matt/Downloads/*nordvpn-release_1.0.0_all.deb
+apt-get update
+apt-get -y install nordvpn
+
+# Install spotify
+snap install spotify
+
+# Install wiregaurd
+add-apt-repository ppa:wireguard/wireguard
+apt install wireguard
+
 set -e
 
 CONFIG="install.conf.yaml"
