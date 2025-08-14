@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, secrets, ... }:
 
 {
   imports =
@@ -27,6 +27,7 @@
   boot.loader.systemd-boot.enable = lib.mkForce false;
 
   hardware.i2c.enable = true;
+  hardware.keyboard.zsa.enable = true;
 
   environment.systemPackages = [ pkgs.sbctl ];
 
@@ -65,6 +66,9 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  # Enable Hyprland
+  programs.hyprland.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {

@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:  # This header is required
+{ config, pkgs, secrets, ... }:  # This header is required
 
-let
-  secrets = import ../secrets.nix;
-in
 {
+  imports = [
+    ./hyprland.nix
+  ];
+
   home.username = "matt";
   home.homeDirectory = "/home/matt";
   nixpkgs.config.allowUnfree = true;
@@ -62,6 +63,7 @@ in
     powerline-fonts
     powerline-symbols
     nerd-fonts.sauce-code-pro
+    keymapp
   ];
 
   fonts.fontconfig.enable = true;

@@ -19,6 +19,7 @@
       user = "matt";
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      secrets = import ./secrets.nix;
     in
     {
       # == NixOS System Configuration ==
@@ -26,7 +27,7 @@
         # The hostname has been changed here
         nixos = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs user; };
+          specialArgs = { inherit inputs user secrets; };
           modules = [
             lanzaboote.nixosModules.lanzaboote
             ./system/configuration.nix
@@ -38,7 +39,7 @@
       homeConfigurations = {
         ${user} = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs user; };
+          extraSpecialArgs = { inherit inputs user secrets; };
           modules = [
             ./config/home.nix 
           ];
