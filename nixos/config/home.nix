@@ -68,6 +68,42 @@
 
   fonts.fontconfig.enable = true;
 
+  # Cursor theme
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    name = "Vanilla-DMZ";
+    package = pkgs.vanilla-dmz;
+    size = 24;
+  };
+
+  # GTK theme for dark applications
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+    iconTheme = {
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+    };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
+  };
+
+  # Force dark theme via dconf
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      gtk-theme = "Adwaita-dark";
+      color-scheme = "prefer-dark";
+    };
+  };
+
   # Install firefox.
   programs.firefox.enable = true;
 
