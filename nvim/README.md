@@ -3,7 +3,7 @@
 This package was generated from:
 
 - Source: /home/matt/.config/nvim
-- Generated at: 2026-02-17T20:58:48Z
+- Generated at: 2026-02-17T21:22:47Z
 
 ## Requirements
 
